@@ -1,5 +1,5 @@
-<h1>Панель управления Hypothesis Workers</h1>
+<h1>Dashboard Hypothesis Workers</h1>
 
-<p>Это панель управления для мониторинга Hypothesis Workers. Она предоставляет обзор статуса работников и метрик производительности.</p>
+<p>Это dashboard Hypothesis Workers. Он представляет сравнение двух выборок и решение двух задач основанных на этих выборках .</p>
 
-<p>Вы можете получить доступ к панели управления по следующей ссылке: <a href="https://ocatano-hypothesis-workers-dashboard-swyo5s.streamlit.app/">Панель управления Hypothesis Workers</a></p>
+<p>Вы можете получить доступ к dashboard по ссылке: <a href="https://ocatano-hypothesis-workers-dashboard-swyo5s.streamlit.app/">Панель управления Hypothesis Workers</a></p>
