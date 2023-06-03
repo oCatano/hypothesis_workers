@@ -50,6 +50,8 @@ def first_hypothesis(data: pd.DataFrame, work_days, alpha: float = 0.05):
     male_data = data_first[data_first.sex == "Men"]
     female_data = data_first[data_first.sex == "Women"]
 
+    test_type, statistic, p_value = test_criterion(male_data, female_data)
+
     trace1 = go.Box(y=male_data['work_days'], name='Male')
     trace2 = go.Box(y=female_data['work_days'], name='Female')
     drawbl = [trace1, trace2]
@@ -72,8 +74,6 @@ def first_hypothesis(data: pd.DataFrame, work_days, alpha: float = 0.05):
 
     fig_poly.update_layout(title='Полигон распределения', xaxis_title='Values', yaxis_title='Cumulative Probability')
     st.plotly_chart(fig_poly)
-
-    test_type, statistic, p_value = test_criterion(male_data, female_data)
 
     # Определение отвергаемости нулевой гипотезы
     if p_value <= alpha:
@@ -110,6 +110,8 @@ def second_hypothesis(data: pd.DataFrame, age, work_days, alpha: float = 0.05):
     older_data = data_second[data_second.age == "Older_35"]
     younger_data = data_second[data_second.age == "Younger_35"]
 
+    test_type, statistic, p_value = test_criterion(older_data, younger_data)
+
     trace1 = go.Box(y=younger_data['work_days'], name='Younger')
     trace2 = go.Box(y=older_data['work_days'], name='Older')
     drawbl = [trace1, trace2]
@@ -136,7 +138,7 @@ def second_hypothesis(data: pd.DataFrame, age, work_days, alpha: float = 0.05):
     fig_poly.update_layout(title='Полигон распределения', xaxis_title='Values', yaxis_title='Cumulative Probability')
     st.plotly_chart(fig_poly)
 
-    test_type, statistic, p_value = test_criterion(older_data, younger_data)
+
 
     # Определение отвергаемости нулевой гипотезы
     if p_value <= alpha:
@@ -171,5 +173,14 @@ if spectra is not None:
     data.columns = ('work_days', 'age', 'sex')
     data.sex = data.sex.apply(lambda x: "Men" if "М" in x or "M" in x else "Women")
 
-    first_hypothesis(data, work_days)
-    second_hypothesis(data, age, work_days)
+    try:
+        first_hypothesis(data, work_days)
+    except:
+        st.error('К сожалению, вы ввели неверные значения age или work_days')
+
+    try:
+        second_hypothesis(data, age, work_days)
+    except:
+        st.error('К сожалению, вы ввели неверные значения age или work_days')
+
+
