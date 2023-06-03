@@ -155,7 +155,8 @@ def second_hypothesis(data: pd.DataFrame, age, work_days, alpha: float = 0.05):
 
 
 st.title("Criterions test")
-st.write("Этот dashboard будет доказывть/опровергать значимость различия средних значений выборок")
+st.subheader("Этот dashboard будет доказывать/опровергать значимость различия средних значений выборок")
+st.write("Мой телеграмм: @San_chilla")
 
 spectra = st.file_uploader("Загрузите csv файл", type={"csv"})
 
